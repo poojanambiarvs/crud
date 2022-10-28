@@ -17,7 +17,7 @@ export class UsersController {
 
   @Get()
   findAll() {
-    console.log(this.findAll);
+    //console.log(this.findAll);
     return this.usersService.findAll();
   }
 
