@@ -5,26 +5,17 @@ import { CreateHl7Dto } from './dto/create-hl7.dto';
 import { UpdateHl7Dto } from './dto/update-hl7.dto';
 import { Request, Response } from 'express';
 import { Hl7 } from './entities/hl7.entity';
+import { PlainBody } from './post.decorator';
+import { request } from 'http';
 @Controller('hl7')
 
 export class Hl7Controller {
   constructor(private readonly hl7Service: Hl7Service) {}
 
+  
   @Post()
-   async index (@Body() data, @Req() req) {
-
-    if (req.readable) {
-            // body is ignored by NestJS -> get raw body from request
-            const raw = await rawbody(req);
-            const text = raw.toString().trim();
-            console.log('body:', text);
-      
-          } else {
-            // body is parsed by NestJS
-            console.log('data:', data);
-          }
-      
-          
+  async index(@PlainBody() text: string) {
+    console.log(text);
   }
 
   @Get()
