@@ -6,7 +6,6 @@ import { UpdateHl7Dto } from './dto/update-hl7.dto';
 import { Request, Response } from 'express';
 import { Hl7 } from './entities/hl7.entity';
 import { PlainBody } from './post.decorator';
-import { request } from 'http';
 @Controller('hl7')
 
 export class Hl7Controller {
@@ -14,8 +13,8 @@ export class Hl7Controller {
 
   
   @Post()
-  async index(@PlainBody() text: string) {
-    console.log(text);
+  async create(@PlainBody() text) {
+    return this.hl7Service.create(text);
   }
 
   @Get()
