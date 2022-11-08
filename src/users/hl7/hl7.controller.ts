@@ -4,7 +4,6 @@ import { Hl7Service } from './hl7.service';
 import { CreateHl7Dto } from './dto/create-hl7.dto';
 import { UpdateHl7Dto } from './dto/update-hl7.dto';
 import { Request, Response } from 'express';
-import { Hl7 } from './entities/hl7.entity';
 import { PlainBody } from './post.decorator';
 @Controller('hl7')
 
@@ -13,11 +12,12 @@ export class Hl7Controller {
 
   
   @Post()
-  async create(@PlainBody() text) {
-    return this.hl7Service.create(text);
+  async create(@PlainBody()  output) {
+    return this.hl7Service.create(output);
+  
   }
 
-  @Get()
+  /*@Get()
   findAll() {
     return this.hl7Service.findAll();
   }
@@ -35,5 +35,5 @@ export class Hl7Controller {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.hl7Service.remove(+id);
-  }
+  }*/
 }
